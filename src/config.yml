@@ -6,8 +6,8 @@ train:
   train_scale: 0.8
   val_scale: 0.1
   epoch: 300
-  batch_size: 32
-  training_length: 10
+  batch_size: 512
+  training_length: 100
 save:
   model_path: './src/save/model/'
   loss_path: './src/save/loss/'

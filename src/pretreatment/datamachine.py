@@ -13,8 +13,11 @@ def difference(dataset, interval=1):
     """
     diff = list()
     for i in range(interval, len(dataset)):
-        value = dataset[i] - dataset[i - interval]
-        diff.append(value)
+        v = []
+        for j in range(len(dataset[i])):
+            value = dataset[i][j] - dataset[i - interval][j]
+            v.append(value)
+        diff.append(v)
     return diff
 
 
@@ -115,8 +118,8 @@ def format_data(dataset, transaction, holidays, oil, store):
     fixna(format_datas)
 
     # 数据编码
-    columns = ['family', 'events']
-    label_encoder(format_datas, columns)
+    format_datas['family'] = LabelEncoder().fit_transform(format_datas['family'])
+
 
     # 返回标准dataset
     return format_datas

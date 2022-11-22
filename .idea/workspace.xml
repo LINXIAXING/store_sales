@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a429b1e-6cfb-45bf-a691-0c342fed5235" name="Changes" comment="添加新的模型，更新特征工程并实现模型训练部分代码">
+      <change afterPath="$PROJECT_DIR$/src/model/MLP.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/LSTM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/TransAm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Transformer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pretreatment/dataload.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pretreatment/dataload.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pretreatment/datamachine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pretreatment/datamachine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/train/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,32 +39,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/lxx/桌面/Github/DySAT_pytorch",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "settings.editor.selected.configurable": "CodeWithMe"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/lxx/桌面/Github/DySAT_pytorch&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeWithMe&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "GitIgnore"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;GitIgnore&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/train" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/save/predictions/11.17" />
+      <recent name="$PROJECT_DIR$/src/save/model/11-17" />
       <recent name="$PROJECT_DIR$/src/utils" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/dataset/additional" />
-      <recent name="$PROJECT_DIR$/src/dataset/train" />
-      <recent name="$PROJECT_DIR$/src/dataset/test" />
     </key>
   </component>
   <component name="RunManager" selected="Python.run">
@@ -189,6 +199,9 @@
       <workItem from="1668333234949" duration="7174000" />
       <workItem from="1668395853064" duration="37120000" />
       <workItem from="1668493540970" duration="1207000" />
+      <workItem from="1668656461991" duration="29626000" />
+      <workItem from="1668695189419" duration="6255000" />
+      <workItem from="1669029839145" duration="2705000" />
     </task>
     <task id="LOCAL-00001" summary="搭建基本框架，完成数据的提取和部分的切割">
       <created>1667477499844</created>
@@ -301,9 +314,9 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/StoreSales$run.coverage" NAME="run Coverage Results" MODIFIED="1668430997280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/StoreSales$run.coverage" NAME="run Coverage Results" MODIFIED="1668700295175" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/StoreSales$6_LSTM.coverage" NAME="6.LSTM模型实例 Coverage Results" MODIFIED="1668411404735" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/learn/长短期记忆(LSTM)/LSTM实例/洗发水销量(单步预测)" />
     <SUITE FILE_PATH="coverage/StoreSales$2_.coverage" NAME="2.数据画图展示 Coverage Results" MODIFIED="1667288611291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/长短期记忆(LSTM)/LSTM实例/空气质量(多变量预测)" />
-    <SUITE FILE_PATH="coverage/StoreSales$transformer_time.coverage" NAME="transformer_time Coverage Results" MODIFIED="1668426102457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/learn/Transformer" />
+    <SUITE FILE_PATH="coverage/StoreSales$transformer_time.coverage" NAME="transformer_time Coverage Results" MODIFIED="1668666425897" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/learn/Transformer" />
   </component>
 </project>

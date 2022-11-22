@@ -10,7 +10,7 @@ import torch
 import numpy as np
 import pandas as pd
 from joblib import dump
-from src.pretreatment.datamachine import format_data, scale
+from src.pretreatment.datamachine import format_data, scale, fixna, difference
 from easydict import EasyDict
 from torch.utils.data import Dataset, DataLoader
 from sklearn.preprocessing import MinMaxScaler
@@ -23,7 +23,7 @@ class DataloaderType(Enum):
     prediction = 3
 
 
-def data_load(config: EasyDict, data_type: DataloaderType):
+def load_store_data(config: EasyDict, data_type: DataloaderType):
     """
 
     :param data_type:
@@ -64,6 +64,21 @@ def data_load(config: EasyDict, data_type: DataloaderType):
     return format_dataset
 
 
+def load_oil_data(path: str):
+    oil = pd.read_csv(path + 'oil.csv')
+    # 拼接油价数据
+    fixna(oil)
+
+
+def get_dataset(config: EasyDict, data_type: DataloaderType):
+    ds = load_store_data(config, data_type)
+    datasets = []
+    for group, d in ds.groupby(['store_nbr', 'family']):
+        new_dataset = StoreDataset(config=config, data_type=data_type)
+        datasets.append(new_dataset)
+    return datasets
+
+
 class StoreDataset(Dataset):
     """Face Landmarks dataset."""
 
@@ -75,19 +90,25 @@ class StoreDataset(Dataset):
         """
 
         # load raw data file
-        self.dl = data_load(config, data_type)
+        self.type = data_type
+        # self.dl = dataset
+        self.dl = load_store_data(config, data_type)
         self.transform = MinMaxScaler()
         self.dl_input = self.dl[['store_nbr', 'family', 'onpromotion', 'events', 'dcoilwtico']]
         self.dl_target = self.dl[['sales']]
-        self.length = config.train.training_length
+        # self.dl_input = difference(self.dl[['store_nbr', 'family', 'onpromotion', 'events', 'dcoilwtico']].values.tolist())
+        # self.dl_target = difference(self.dl[['sales']].values.tolist())
+        self.window = config.train.training_length
 
     def __len__(self):
         # return number of store
-        return int(len(self.dl) / self.length) - 2
+        return len(self.dl) - self.window
         # return len(self.dl)
 
     # Will pull an index between 0 and __len__.
     def __getitem__(self, idx):
-        _input = torch.tensor(self.dl_input.iloc[idx * self.length: (idx + 1) * self.length].values)  # [10, 5]
-        target = torch.tensor(self.dl_target.iloc[idx * self.length: (idx + 1) * self.length].values)  # [10, 1]
-        return scale(_input), scale(target)
+        # _input = torch.tensor(self.dl_input[idx: idx + self.window])  # [100, 5]
+        # target = torch.tensor(self.dl_target[idx + self.window: idx + self.window + 1])  # [1, 1]
+        _input = torch.tensor(self.dl_input.iloc[idx: idx + self.window].values)  # [100, 5]
+        target = torch.tensor(self.dl_target.iloc[idx + self.window: idx + self.window + 1].values)  # [1, 1]
+        return _input, target

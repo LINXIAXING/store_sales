@@ -22,10 +22,10 @@ class LstmRNN(nn.Module):
         self.lstm = nn.LSTM(input_size, hidden_size, num_layers)  # utilize the LSTM model in torch.nn
         self.linear1 = nn.Linear(hidden_size, output_size)  # 全连接层
 
-    def forward(self, _x, device):
+    def forward(self, _x):
         x, _ = self.lstm(_x)  # _x is input, size (seq_len, batch, input_size)
         s, b, h = x.shape  # x is output, size (seq_len, batch, hidden_size)
         x = x.view(s * b, h)
-        x = self.linear1(x).to(device)
+        x = self.linear1(x)
         x = x.view(s, b, -1)
         return x

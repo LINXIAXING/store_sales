@@ -31,3 +31,5 @@ Prodict the store sales states of the future based on mathine learning.
 - /save/predictions: 记录模型预测折线图
 
 **部分设置可在config.yml中进行调整**
+
+官方数据集：https://www.kaggle.com/competitions/store-sales-time-series-forecasting/data
